@@ -1,5 +1,5 @@
 # coding: utf-8
-import random
+importt numpy as np
 
 #はさみ、貯金箱、便座シート、コロコロ、Ziploc、ステッカー(猫)、Xmasカチューシャ、メダル
 people = [
@@ -36,9 +36,17 @@ for i in pdsum_sorted:
   
 def select(num):
   data = [0]*16
+  sum = 0
   for i in range(16):
-     data = people[i][num]
+     sum += people[i][num]
+  for i in range(16):
+     data = people[i][num]/sum
+  
+  
+  
+  
      
+  
   
 
 
