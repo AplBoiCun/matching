@@ -22,29 +22,36 @@ def total(data):
 
 
 def select(pdmax,data,people,ans):
+    print("Checker4-1")
     weight = [0]*16
     sum = 0
+    print("Checker4-2")
     for i in range(16):
       sum += data[i][pdmax]
+    print("Checker4-3")
     for i in range(16):
       weight[i] = data[i][pdmax]/sum
-
+    print("Checker4-4")
     a = np.random.choice(people, p=weight)
     ans[pdmax*2][1] = a
-    data[a] = [0]*8
-    people[a] = 0
+    print("Checker4-5")
 
-    if sum != data[a][pdmax]:
+    weight2 = [i for i in weight if i != 0]
+
+    if len(weight2) != 1:
+        print("Checker4-6")
         b = a
         while a == b:
             b = np.random.choice(people, p=weight)
+        print("Checker4-7")
         ans[pdmax*2+1][1] = b
         data[b] = [0]*8
         people[b] = 0
-
+    print("Checker4-8")
+    data[a] = [0]*8
+    people[a] = 0
     for i in range(16):
         data[i][pdmax] = 0
-
 
 def fill(ans,people):
        if people != [0]*16:
@@ -59,33 +66,38 @@ def fill(ans,people):
                     a += 1
 
 def main():
+    print("Checker1")
     np.random.seed(0)
     #はさみ、貯金箱、便座シート、コロコロ、Ziploc、ステッカー(猫)、Xmasカチューシャ、メダル
     data = [
-    [0,0,0,0,1,0,4,0],
-    [0,0,2,2,1,0,0,0],
-    [0,0,0,0,5,0,0,0],
-    [0,0,0,3,0,2,0,0],
-    [0,0,0,0,0,5,0,0],
-    [4,1,0,0,0,0,0,0],
-    [0,0,0,2,0,0,1,2],
-    [0,0,0,0,0,2,0,3],
-    [0,0,0,0,0,0,5,0],
-    [0,4,0,1,0,0,0,0],
-    [5,0,0,0,0,0,0,0],
+    [0,0,0,2,3,0,0,0],
+    [0,2,0,0,3,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,5,0,0,0,0,0,0],
+    [0,0,0,5,0,0,0,0],
+    [0,0,0,5,0,0,0,0],
+    [0,2,0,0,3,0,0,0],
+    [0,0,0,0,0,0,0,0],
     [0,0,3,2,0,0,0,0],
-    [0,0,5,0,0,0,0,0],
-    [1,0,0,0,4,0,0,0],
     [0,0,0,0,0,0,0,0],
+    [0,0,0,5,0,0,0,0],
+    [0,0,0,2,3,0,0,0],
+    [0,3,0,0,0,2,0,0],
     [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,5,0,0],
+    [0,0,0,2,3,0,0,0],
     ]
     ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
     people = [i for i in range(1,17)]
 
     while total(data) != 0:
+        print("Checker2")
         pdmax = find(data)
+        print("Checker3")
         select(pdmax,data,people,ans)
+        print("Checker4")
     fill(ans,people)
+    print("Checker5")
     print(ans)
 
 if __name__ == '__main__':
