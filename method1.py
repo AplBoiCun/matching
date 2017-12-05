@@ -49,6 +49,7 @@ def select(pdmax):
   a = random.choice(name, p=weight) 
   ans[pdmax*2][1] = a
   data[a] = [0]*8
+  people.remove(a)
 
   total = 0
   for i in data:
@@ -61,6 +62,10 @@ def select(pdmax):
         b = random.choice(name, p=weight) 
       ans[pdmax*2+1][1] = b
       data[b] = [0]*8
+      people.remove(b)
+    
+for i in range(16):
+    data[i][pdmax] = 0
 
 
 
