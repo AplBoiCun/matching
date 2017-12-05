@@ -45,11 +45,11 @@ def select(pdmax,data,people,ans):
             b = np.random.choice(people, p=weight)
         print("Checker4-7")
         ans[pdmax*2+1][1] = b
-        data[b] = [0]*8
-        people[b] = 0
+        data[b-1] = [0]*8
+        people[b-1] = 0
     print("Checker4-8")
-    data[a] = [0]*8
-    people[a] = 0
+    data[a-1] = [0]*8
+    people[a-1] = 0
     for i in range(16):
         data[i][pdmax] = 0
 
@@ -89,7 +89,7 @@ def main():
     ]
     ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
     people = [i for i in range(1,17)]
-
+    #people = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"]
     while total(data) != 0:
         print("Checker2")
         pdmax = find(data)
