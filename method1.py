@@ -20,7 +20,7 @@ people = [
 [0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0],
 ]
-
+name = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16]
 pdsum = [0,0,0,0,0,0,0,0]
 
 for i in people:
@@ -29,19 +29,20 @@ for i in people:
 
 print(pdsum)
 
-pdsum_sorted = pdsum.sorted()
+pdsum_sorted = pdsum.reverse()
 
 for i in pdsum_sorted:
   a,b = select(pdsum.index(i))
   
 def select(num):
-  data = [0]*16
+  
+  weight = [0]*16
   sum = 0
   for i in range(16):
      sum += people[i][num]
   for i in range(16):
-     data = people[i][num]/sum
-  
+     weight = people[i][num]/sum
+  random.choice(name, p=weight)      
   
   
   
