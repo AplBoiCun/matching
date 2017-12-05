@@ -46,6 +46,7 @@ def select(num):
   b = random.choice(name, p=weight) 
   while a == b:
     b = random.choice(name, p=weight) 
+  return a,b
   
   
   
