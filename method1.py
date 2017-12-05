@@ -31,3 +31,15 @@ print(pdsum)
 
 pdsum_sorted = pdsum.sorted()
 
+for i in pdsum_sorted:
+  a,b = select(pdsum.index(i))
+  
+def select(num):
+  data = [0]*16
+  for i in range(16):
+     data = people[i][num]
+     
+  
+
+
+
