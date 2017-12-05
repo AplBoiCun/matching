@@ -12,25 +12,16 @@ def find(data):
     if pdsum[pdmax]<pdsum[i]:
       pdmax=i
   return pdmax
-      
-    
 
-def select(num):  
-  weight = [0]*16
-  sum = 0
-  for i in range(16):
-     sum += people[i][num]
-  for i in range(16):
-     weight = people[i][num]/sum      
-  a = random.choice(name, p=weight) 
-  b = random.choice(name, p=weight) 
-  while a == b:
-    b = random.choice(name, p=weight) 
-  people[a] = [0]*8
-  people[b] = [0]*8
-  return a,b
+def total(data):
+    sum = 0
+    for i in data:	
+         for j in range(8):		
+             sum += i[j]	
+    return sum
+ 
 
-def select(pdmax):  		 
+def select(pdmax,data):  		 
     weight = [0]*16		   
     sum = 0		  
     for i in range(16):		   
@@ -43,12 +34,7 @@ def select(pdmax):
    data[a] = [0]*8		 
    people.remove(a)	
  		
-   total = 0	
-   for i in data:	
-         for j in range(8):		
-             total += i[j]		
-   		
-   if total != 0:  		
+   if total(data) != 0:  		
        b = a		
        while a == b:		
          b = random.choice(name, p=weight) 		
@@ -91,9 +77,16 @@ def main():
     ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
     people = [i for i in range(16)]
     
-    num = find(data)
-    
+    while total(data) != 0:
+        pdmax = find(data)
+        select(pdmax)
+    fill(ans,people)
+    print(ans)
 
+    
+    if __name__ == '__main__':
+    main()
+    
                     
   
      
