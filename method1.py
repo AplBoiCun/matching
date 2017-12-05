@@ -8,21 +8,21 @@ data = [
 [0,0,0,0,5,0,0,0],
 [0,0,0,3,0,2,0,0],
 [0,0,0,0,0,5,0,0],
-[4,1,0,0,0,0,0,0],
-[0,0,0,2,0,0,1,2],
-[0,0,0,0,0,2,0,3],
-[0,0,0,0,0,0,5,0],
-[0,4,0,1,0,0,0,0],
-[5,0,0,0,0,0,0,0],
-[0,0,3,2,0,0,0,0],
-[0,0,5,0,0,0,0,0],
-[1,0,0,0,4,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0],
 ]
 
 ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
-people = [i for i in range(16)]
+name = [i for i in range(16)]
 
     
 def find(data):
@@ -39,19 +39,21 @@ def find(data):
       
     
 
-def select(num):  
+def select(pdmax):  
   weight = [0]*16
   sum = 0
   for i in range(16):
-     sum += people[i][num]
+     sum += data[i][pdmax]
   for i in range(16):
-     weight = people[i][num]/sum
+     weight = data[i][pdmax]/sum
   a = random.choice(name, p=weight) 
+ans[pdmax*2][1] = a
+data[a] = [0]*8
   b = random.choice(name, p=weight) 
   while a == b:
     b = random.choice(name, p=weight) 
-  people[a] = [0]*8
-  people[b] = [0]*8
+ans[pdmax*2+1][1] = b
+data[b] = [0]*8
   return a,b
 
   
