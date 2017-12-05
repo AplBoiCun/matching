@@ -19,3 +19,9 @@ people = [
 [0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0],
 ]
+
+productsum = [0,0,0,0,0,0,0,0]
+
+for i in people:
+  for j in range(8):
+    productsum[j] += i[j]
