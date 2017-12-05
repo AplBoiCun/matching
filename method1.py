@@ -30,6 +30,36 @@ def select(num):
   people[b] = [0]*8
   return a,b
 
+def select(pdmax):  		 
+    weight = [0]*16		   
+    sum = 0		  
+    for i in range(16):		   
+      sum += data[i][pdmax]		
+    for i in range(16):		  
+      weight = data[i][pdmax]/sum		
+         		
+    a = random.choice(name, p=weight) 		
+   ans[pdmax*2][1] = a		
+   data[a] = [0]*8		 
+   people.remove(a)	
+ 		
+   total = 0	
+   for i in data:	
+         for j in range(8):		
+             total += i[j]		
+   		
+   if total != 0:  		
+       b = a		
+       while a == b:		
+         b = random.choice(name, p=weight) 		
+       ans[pdmax*2+1][1] = b		
+       data[b] = [0]*8		
+       people.remove(b)		
+     		
+ for i in range(16):		
+     data[i][pdmax] = 0		
+  
+
 def fill(ans,people):
        if people != []:
             random.shuffle(people)
