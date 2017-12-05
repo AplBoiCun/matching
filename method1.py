@@ -1,5 +1,5 @@
 # coding: utf-8
-importt numpy as np
+import random
 
 #はさみ、貯金箱、便座シート、コロコロ、Ziploc、ステッカー(猫)、Xmasカチューシャ、メダル
 people = [
@@ -42,7 +42,10 @@ def select(num):
      sum += people[i][num]
   for i in range(16):
      weight = people[i][num]/sum
-  random.choice(name, p=weight)      
+  a = random.choice(name, p=weight) 
+  b = random.choice(name, p=weight) 
+  while a == b:
+    b = random.choice(name, p=weight) 
   
   
   
