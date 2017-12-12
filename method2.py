@@ -19,6 +19,20 @@ def total(data):
          for j in range(8):
              sum += i[j]
     return sum
+  
+def change_data(data):
+   for i in data:
+     for j in i:
+       if i[j] == "A":
+         "A" = 100
+       if i[j] == "B":
+         "B" = 50
+       if i[j] == "C":
+         "C" = 10
+       if i[j] == "D":
+         "D" = 2
+       if i[j] == "E":
+         "E" = 1
 
 
 def select(pdmax,data,people,ans):
