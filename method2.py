@@ -84,7 +84,6 @@ def main():
     ]
     ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
     people = [i for i in range(1,17)]
-    #people = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"]
     while total(data) != 0:
         pdmax = find(data)
         select(pdmax,data,people,ans)
