@@ -1,17 +1,15 @@
 # coding: utf-8
 import numpy as np
 
-def find(data):
+def updtpdsum(data):
   pdsum = [0,0,0,0,0,0,0,0]
   for i in data:
     for j in range(8):
       pdsum[j] += i[j]
 
   pdmax=0
-  for i in range(8):
-    if pdsum[pdmax]<pdsum[i]:
-      pdmax=i
-  return pdmax
+ 
+
 
 def total(data):
     sum = 0
@@ -55,37 +53,32 @@ def fill(ans,people):
                     i[1] = people[a]
                     a += 1
 
-def evaluate(data,ans):
-  pass
-  
-                    
-
 def main():
     np.random.seed(0)
     #はさみ、貯金箱、便座シート、コロコロ、Ziploc、ステッカー(猫)、Xmasカチューシャ、メダル
-    #Aは1番目に欲しいもの、Bは2番目に欲しいもの、Cは欲しくないけどキレないもの、Dは2番目にキレるもの、Eは1番目にキレるもの
     data = [
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"],
-    ["A","B","C","C","C","C","D","E"]
+    [0,0,0,2,3,0,0,0],
+    [0,2,0,0,3,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,5,0,0,0,0,0,0],
+    [0,0,0,5,0,0,0,0],
+    [0,0,0,5,0,0,0,0],
+    [0,2,0,0,3,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,3,2,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,5,0,0,0,0],
+    [0,0,0,2,3,0,0,0],
+    [0,3,0,0,0,2,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,5,0,0],
+    [0,0,0,2,3,0,0,0],
     ]
     ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
     people = [i for i in range(1,17)]
+    #people = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"]
     while total(data) != 0:
-        pdmax = find(data)
+        pdmax = updtpdsum(data)
         select(pdmax,data,people,ans)
     fill(ans,people)
     print(ans)
