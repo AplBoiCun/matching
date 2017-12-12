@@ -1,18 +1,16 @@
 # coding: utf-8
 import numpy as np
 
-def find(data):
+pdlist=[0,1,2,3,4,5,6,7]
+np.random.shuffle(pdlist)
+
+def updtpdsum(data):
   pdsum = [0,0,0,0,0,0,0,0]
   for i in data:
     for j in range(8):
       pdsum[j] += i[j]
 
-  pdmax=0
-  for i in range(8):
-    if pdsum[pdmax]<pdsum[i]:
-      pdmax=i
-  return pdmax
-
+      
 def total(data):
     sum = 0
     for i in data:
@@ -98,10 +96,11 @@ def main():
     ]
     ans = [ [1,0],[1,0],[2,0],[2,0],[3,0],[3,0],[4,0],[4,0],[5,0],[5,0],[6,0],[6,0],[7,0],[7,0],[8,0],[8,0] ]
     people = [i for i in range(1,17)]
-    while total(data) != 0:
-        pdmax = find(data)
+    for k in range(8):
+        updtpdsum(data)
+        pdmax = pdlist[k]
         select(pdmax,data,people,ans)
-    fill(ans,people)
+
     print(ans)
 
 if __name__ == '__main__':
