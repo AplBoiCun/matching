@@ -2,20 +2,26 @@
 import numpy as np
 import time
 
+def random_weight():
+    a = np.random.randint(1,101,size=5)
+    return np.sort(a)[::-1]
+
+
 def weighting(data):
+    a = random_weight()
     data_weighted = [[0] * 8] * 16
-    for i in range(8):
+    for i in range(16):
         for j in range(8):
             if data[i][j] == "A":
-                data_weighted[i][j] = 100
+                data_weighted[i][j] = a[0]
             elif data[i][j] == "B":
-                data_weighted[i][j] = 50
+                data_weighted[i][j] = a[1]
             elif data[i][j] == "C":
-                data_weighted[i][j] = 10
+                data_weighted[i][j] = a[2]
             elif data[i][j] == "D":
-                data_weighted[i][j] = 2
+                data_weighted[i][j] = a[3]
             else:
-                data_weighted[i][j] = 1
+                data_weighted[i][j] = a[4]
     return data_weighted
 
 
@@ -64,29 +70,27 @@ def main():
     # はさみ、貯金箱、便座シート、コロコロ、Ziploc、ステッカー(猫)、Xmasカチューシャ、メダル
     # Aは1番目に欲しいもの、Bは2番目に欲しいもの、Cは欲しくないけどキレないもの、Dは2番目にキレるもの、Eは1番目にキレるもの
     data = [
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "C", "B", "C", "C", "E", "D", "C"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["C", "B", "A", "C", "C", "D", "C", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "D", "C", "C", "A", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"],
-        ["A", "B", "C", "C", "C", "C", "D", "E"]
-    ]
-
+    ['C', 'E', 'C', 'A', 'C', 'B', 'C', 'D'],
+    ['C', 'C', 'C', 'B', 'A', 'C', 'E', 'D'],
+    ['A', 'C', 'C', 'B', 'C', 'C', 'E', 'D'],
+    ['C', 'B', 'A', 'C', 'C', 'C', 'E', 'D'],
+    ['C', 'D', 'C', 'B', 'C', 'A', 'C', 'E'],
+    ['C', 'B', 'C', 'C', 'C', 'A', 'E', 'D'],
+    ['C', 'A', 'D', 'C', 'C', 'B', 'C', 'E'],
+    ['C', 'D', 'C', 'A', 'C', 'B', 'C', 'E'],
+    ['C', 'C', 'C', 'B', 'C', 'A', 'E', 'D'],
+    ['C', 'C', 'C', 'A', 'B', 'C', 'E', 'D'],
+    ['A', 'C', 'C', 'C', 'C', 'B', 'E', 'D'],
+    ['C', 'E', 'C', 'C', 'B', 'A', 'C', 'D'],
+    ['C', 'C', 'B', 'A', 'C', 'C', 'E', 'D'],
+    ['C', 'C', 'C', 'B', 'A', 'C', 'D', 'E'],
+    ['B', 'C', 'C', 'A', 'C', 'C', 'E', 'D'],
+    ['B', 'C', 'C', 'C', 'C', 'A', 'D', 'E']]
     best_ans = [[1, 1], [1, 2], [2, 3], [2, 4], [3, 5], [3, 6], [4, 7], [4, 8], [
         5, 9], [5, 10], [6, 11], [6, 12], [7, 13], [7, 14], [8, 15], [8, 16]]
     best_evallist = [0, 0, 0, 0, 16]
 
-    for i in range(10000):
+    for i in range(1000000):
         ans = [[1, 0], [1, 0], [2, 0], [2, 0], [3, 0], [3, 0], [4, 0], [4, 0], [
             5, 0], [5, 0], [6, 0], [6, 0], [7, 0], [7, 0], [8, 0], [8, 0]]
         data_weighted = weighting(data)
